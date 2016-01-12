@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="../src/addformfields.js"></script>
+</head>
+<body>
+	<div id="testing"></div>
+	<button id="add">Add</button>
+	<script>
+		$(document).ready(function(){
+			$('#add').click(function(){
+				addFields(
+					[
+						{
+							target:'#testing',
+							type:'select',
+							id:'myNewSelectField',
+							cssClass:'field',
+							val:{
+								'Thing One':'thing1',
+								'Thing Two':'thing2'
+							}
+						},
+						{
+							target:'#testing',
+							type:'text',
+							id:'myNewTextField',
+							cssClass:'field',
+							placeholder:'this is a text field',
+							val:{
+								'Thing One':'thing1',
+								'Thing Two':'thing2'
+							}
+						},
+						{
+							target:'#testing',
+							type:'radio',
+							selected:'Thing Two',
+							name:'myRadio',
+							id:'myNewRadioField',
+							cssClass:'field',
+							val:{
+								'Thing One':'thing1',
+								'Thing Two':'thing2'
+							}
+						}
+					],
+					{
+						max:3,
+						maxFunc:function(){
+							$('#add').fadeOut();
+						}
+					}
+				);
+			});
+		});
+	</script>
+</body>
+</html>
