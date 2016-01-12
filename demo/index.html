@@ -20,6 +20,11 @@
 							val:{
 								'Thing One':'thing1',
 								'Thing Two':'thing2'
+							},
+							wrapper:'<div class="wrapper">',
+							fireevent:{
+								trigger:'change',
+								action:function(){ alert('Select Changed'); }
 							}
 						},
 						{
@@ -31,19 +36,26 @@
 							val:{
 								'Thing One':'thing1',
 								'Thing Two':'thing2'
+							},
+							wrapper:'<div class="wrapper">',
+							fireevent:{
+								trigger:'keyup',
+								action:function(){ alert('text keyup'); }
 							}
 						},
 						{
 							target:'#testing',
 							type:'radio',
 							selected:'Thing Two',
+							label:true, // not necessary, default is true
 							name:'myRadio',
 							id:'myNewRadioField',
 							cssClass:'field',
-							val:{
-								'Thing One':'thing1',
-								'Thing Two':'thing2'
-							}
+							val:[
+								'Thing One',
+								'Thing Two'
+							],
+							wrapper:'<div class="wrapper">'
 						}
 					],
 					{
