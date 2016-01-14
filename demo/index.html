@@ -2,25 +2,36 @@
 <head>
 	<title></title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="../src/addformfields.js"></script>
 </head>
 <body>
-	<div id="testing"></div>
-	<button id="add">Add</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-push-4">
+				<div id="testing"></div>
+				<hr />
+				<div class="text-center">
+					<button class="btn btn-primary" id="add">Add</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script>
 		$(document).ready(function(){
 			$('#add').click(function(){
 				addFields(
 					[
 						{
-							target:'#testing',
 							type:'select',
 							id:'myNewSelectField',
-							cssClass:'field',
+							cssClass:'form-control',
 							val:{
 								'Thing One':'thing1',
 								'Thing Two':'thing2'
 							},
+							label:'Some Label Thing',
 							wrapper:'<div class="wrapper">',
 							fireevent:{
 								trigger:'change',
@@ -28,37 +39,60 @@
 							}
 						},
 						{
-							target:'#testing',
 							type:'text',
-							id:'myNewTextField',
-							cssClass:'field',
-							placeholder:'this is a text field',
-							val:{
-								'Thing One':'thing1',
-								'Thing Two':'thing2'
-							},
-							wrapper:'<div class="wrapper">',
+							id:'Text',
+							cssClass:'form-control',
+							placeholder:'Text Placeholder',
+							val:'Text Value',
+							label:'Text Label',
+							wrapper:'<div class="form-group">',
 							fireevent:{
 								trigger:'keyup',
 								action:function(){ alert('text keyup'); }
 							}
 						},
 						{
-							target:'#testing',
-							type:'radio',
-							selected:'Thing Two',
-							label:true, // not necessary, default is true
+							type:'checkbox',
+							selected:['val1','val3'],
 							name:'myRadio',
-							id:'myNewRadioField',
-							cssClass:'field',
-							val:[
-								'Thing One',
-								'Thing Two'
-							],
-							wrapper:'<div class="wrapper">'
+							id:'val1',
+							val:{
+								'val1':'Thing One',
+								'val2':'Thing Two',
+								'val3':'Thing Three'
+							},
+							wrapper:'<div class="radio">'
+						},
+						{
+							focus:true,
+							type:'textarea',
+							label:'Textarea',
+							name:'myTextAra',
+							id:'myTextAra',
+							cssClass:'form-control',
+							placeholder:'Textare Placeholder',
+							val:'Textarea Value',
+							wrapper:'<div class="form-group">'
+						},
+						{
+							type:'button',
+							label:'Button',
+							name:'button',
+							id:'Button',
+							cssClass:'btn btn-default btn-sm',
+							val:'Button'
+						},
+						{
+							type:'submit',
+							label:'Submit',
+							name:'Submit',
+							id:'Submit',
+							cssClass:'btn btn-primary btn-sm',
+							val:'Submit'
 						}
 					],
 					{
+						target:'#testing',
 						max:3,
 						maxFunc:function(){
 							$('#add').fadeOut();
